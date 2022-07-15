@@ -10,7 +10,7 @@ const d3ModelModel = require('./models/3dModels')
 const ProjectModel = require('./models/Projects')
 const AccountModel = require('./models/Accounts')
 
-const sequelize = new Sequelize("obliteratorDb", "root", "root", {
+const sequelize = new Sequelize("obliteratorDb", "root", "pepito", {
     host: "localhost",
     dialect: "mysql"
 })
