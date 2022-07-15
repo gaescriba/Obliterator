@@ -5,19 +5,23 @@ const redis = require('redis')
 const connectRedis = require('connect-redis')
 const session = require('express-session')
 const apiRouter = require('./routes/api')
+const dotenv = require('dotenv')
+
+
+const morgan = require("morgan");
 
 //comentario del gabo 
 
 const app = express()
 const redisStore = connectRedis(session)
-
+dotenv.config()
 const redisClient = redis.createClient({
   port: 6379,
   host: 'localhost'
 })
 
 require('./db')
-
+app.use(morgan("dev"))
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))

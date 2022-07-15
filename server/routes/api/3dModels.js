@@ -25,18 +25,18 @@ try{
 
 
 let modelos = new Modelos({
-
+    
     model_name: req.body.model_name,
     model_url:result.secure_url,
     price:req.body.price
 
 
 })
-await modelos.create()
+
 res.json(modelos)
 }catch(err){
 
-
+res.send(err)
 
 
 }
@@ -47,11 +47,10 @@ res.json(modelos)
 
 // preguntar modelos
 
-
-router.get('/', async (req,res) => {
-    const modelos = await Modelos.findAll()
-    res.json(modelos)
-})
+//router.get('/', async (req,res) => {
+  //  const modelos = await Modelos.findAll()
+    //res.json(modelos)
+//})
 
 router.put('/:model_name',async(req,res)=>{
 
