@@ -59,38 +59,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
 </svelte:head>
 
-
-
-<form>
-  <!-- Email input -->
-  <div class="form-outline mb-4">
-    <label class="form-label" for="form2Example1">Nombre de Usuario</label>
-    <input type="text" id="form2Example1" class="form-control" />
-   
-  </div>
-
-  <!-- Password input -->
-  <div class="form-outline mb-4">
-    <label class="form-label" for="form2Example2">Contraseña</label>
-    <input type="password" id="form2Example2" class="form-control" />
-   
-  </div>
-
- 
-  <button type="submit" class="btn btn-primary">Login</button>
- 
-</form>
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="Login">
+<div class="Login container m-auto">
     <div class="backgroun">
         <div class="container__inputs">
             <input type="text" placeholder={ph_username} id="username">
@@ -109,4 +78,4 @@
             <button on:click={logIn}>Log In</button>
         </div>
     </div>
-</div> -->
+</div>
