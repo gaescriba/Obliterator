@@ -9,7 +9,7 @@ const TransactionModel = require('./models/Transactions')
 const d3ModelModel = require('./models/3dModels')
 const ProjectModel = require('./models/Projects')
 const AccountModel = require('./models/Accounts')
-
+const d3ImagenModel = require('./models/3dImagenModels')
 const sequelize = new Sequelize("obliteratorDb", "root", "root", {
     host: "localhost",
     dialect: "mysql"
@@ -24,11 +24,12 @@ const Transaction = TransactionModel(sequelize, Sequelize)
 const d3Model = d3ModelModel(sequelize, Sequelize)
 const Project = ProjectModel(sequelize, Sequelize)
 const Account = AccountModel(sequelize, Sequelize)
-
+const d3Imagen = d3ImagenModel(sequelize, Sequelize)
 sequelize.sync({force: false})
     .then(() => console.log('Tablas actualizadas')) 
 
 Account.hasOne(User)
+d3Imagen.hasOne(d3Model)
 Location.hasMany(User)
 PaymentMethod.hasOne(Transaction)
 TransactionType.hasOne(Transaction)
@@ -46,5 +47,6 @@ module.exports = {
     Transaction,
     d3Model,
     Project,
-    Account
+    Account,
+    d3Imagen
 }
