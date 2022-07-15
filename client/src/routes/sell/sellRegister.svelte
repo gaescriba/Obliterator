@@ -10,9 +10,9 @@ let ph_archivo= "ingrese los archivos"
 </script>
 
 
-<svelte:head>
+<!-- <svelte:head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
-</svelte:head>
+</svelte:head> -->
 
 <form>
   <div class="mb-3">
@@ -33,5 +33,5 @@ let ph_archivo= "ingrese los archivos"
     <input class="form-control" type="file" id="archivo">
   </div>
  
-  <button type="submit" class="btn btn-primary">Vender</button>
+  <button type="submit" class="btn btn-danger">Vender</button>
 </form>
