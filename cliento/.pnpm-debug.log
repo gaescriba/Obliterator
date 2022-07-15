@@ -1,0 +1,15 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1,
+    "total": 1
+  },
+  "1 error pnpm": {
+    "code": "ERR_PNPM_RECURSIVE_RUN_NO_SCRIPT",
+    "err": {
+      "name": "pnpm",
+      "message": "None of the packages has a \"outdate\" script",
+      "code": "ERR_PNPM_RECURSIVE_RUN_NO_SCRIPT",
+      "stack": "pnpm: None of the packages has a \"outdate\" script\n    at exports2.default (C:\\Users\\dan\\scoop\\persist\\nodejs-lts\\bin\\node_modules\\pnpm\\dist\\pnpm.cjs:177646:17)\n    at async C:\\Users\\dan\\scoop\\persist\\nodejs-lts\\bin\\node_modules\\pnpm\\dist\\pnpm.cjs:182068:21\n    at async run (C:\\Users\\dan\\scoop\\persist\\nodejs-lts\\bin\\node_modules\\pnpm\\dist\\pnpm.cjs:182042:34)\n    at async runPnpm (C:\\Users\\dan\\scoop\\persist\\nodejs-lts\\bin\\node_modules\\pnpm\\dist\\pnpm.cjs:182261:5)\n    at async C:\\Users\\dan\\scoop\\persist\\nodejs-lts\\bin\\node_modules\\pnpm\\dist\\pnpm.cjs:182253:7"
+    }
+  }
+}
