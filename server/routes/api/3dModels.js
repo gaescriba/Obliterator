@@ -1,10 +1,10 @@
 const router = require('express').Router()
 
-const upload = require('../utils/multerFiles')
+const upload = require('../../utils/multerFIles')
 
-const Cloudinary = require('../utils/cloudinary')
+const Cloudinary = require('../../utils/cloudinary')
 
-const Modelos = require('../models/3dModels')
+const Modelos = require('../../models/3dModels')
 
 
 
