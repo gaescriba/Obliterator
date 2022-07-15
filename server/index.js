@@ -6,7 +6,7 @@ const connectRedis = require('connect-redis')
 const session = require('express-session')
 const apiRouter = require('./routes/api')
 
-//comentario del elias v2
+//comentario del gabo 
 
 const app = express()
 const redisStore = connectRedis(session)
