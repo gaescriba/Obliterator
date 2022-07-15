@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "service": "nodemon"
+    "service": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -40,7 +40,7 @@
       ".env",
       ".env.example"
     ],
-    "exec": "npm run start",
-    "ext": "ts"
+    "exec": "node -r dotenv/config src/index.js",
+    "ext": "js"
   }
 }

@@ -4,7 +4,7 @@ const upload = require('../../utils/multerFIles')
 
 const Cloudinary = require('../../utils/cloudinary')
 
-const Modelos = require('../../models/3dModels')
+const Modelos = require('../../src/models/3dModels')
 
 
 
