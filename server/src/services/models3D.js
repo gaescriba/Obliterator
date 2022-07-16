@@ -1,4 +1,9 @@
-import { getModels } from '../database/index.js'
+import {
+  deleteOneModel,
+  getAllModels,
+  storeModel,
+  updateOneModel
+} from '../database/queries/models3D.js'
 import { uploadImage } from '../utils/index.js'
 
 /**
@@ -8,23 +13,18 @@ import { uploadImage } from '../utils/index.js'
  * @param {Number} args.price
  * @returns Model object
  */
-const uploadModels = async ({ path, modelName, price }) => {
+const uploadModel = async ({ path, modelName, price }) => {
   const result = await uploadImage(path)
-  const { Model3DModel } = getModels()
-  const model = await Model3DModel.create({
-    model_name: modelName,
-    image_url: result.secure_url,
+
+  return await storeModel({
+    modelName,
+    imageUrl: result.secure_url,
     price
   })
-
-  return model.get()
 }
 
-const getAllModels = async () => {
-  const { Model3DModel } = getModels()
-  const models = await Model3DModel.findAll()
-
-  return models.map(model => model.get())
+const getModels = async () => {
+  return await getAllModels()
 }
 
 /**
@@ -37,31 +37,14 @@ const getAllModels = async () => {
  * @param {String|undefined} modelData.polygons_id
  */
 const updateModel = async (modelID, modelData) => {
-  const { Model3DModel } = getModels()
-
-  await Model3DModel.update(modelData, {
-    where: { model_id: modelID },
-    limit: 1
-  })
-
-  const modelUpdated = await Model3DModel.findByPk(modelID)
-
-  return modelUpdated.get()
+  return await updateOneModel(modelID, modelData)
 }
 
 /**
  * @param {Number} modelID
  */
 const deleteModel = async modelID => {
-  const { Model3DModel } = getModels()
-
-  await Model3DModel.destroy({
-    where: {
-      model_id: modelID
-    }
-  })
-
-  return 'El modelo fue borrado correctamente'
+  return await deleteOneModel(modelID)
 }
 
-export { uploadModels, getAllModels, updateModel, deleteModel }
+export { uploadModel, getModels, updateModel, deleteModel }

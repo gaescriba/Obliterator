@@ -3,7 +3,7 @@ import {
   deleteModel,
   getAllModels,
   updateModel,
-  uploadModels
+  uploadModel
 } from '../../services/models3D.js'
 import { multerInstance as multer } from '../../utils/index.js'
 import { response } from '../response.js'
@@ -20,7 +20,7 @@ const api3dModelsRouter = (router, prefix = '/models') => {
         body: { model_name: modelName, price },
         file: { path }
       } = req
-      const model = await uploadModels({
+      const model = await uploadModel({
         path,
         modelName,
         price: parseInt(price)

@@ -133,3 +133,4 @@ const getModels = () => ({
 })
 
 export { sequelize, dbConnection, getModels }
+export * from './queries/index.js'
