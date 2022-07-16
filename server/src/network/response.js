@@ -1,17 +1,17 @@
 /**
  * @param {Object} args
- * @param {import('express').Response} args.response
+ * @param {import('express').Response} args.res
  * @param {Boolean} args.error
  * @param {Object} args.message
  * @param {Number|undefined} args.status
  */
 const response = ({
-  response,
+  res,
   error = true,
   message = 'Internal server error',
   status = 500
 }) => {
-  response.status(status).send({ error, message })
+  res.status(status).send({ error, message })
 }
 
 export { response }

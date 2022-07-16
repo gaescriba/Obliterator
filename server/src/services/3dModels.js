@@ -49,4 +49,19 @@ const updateModel = async (modelID, modelData) => {
   return modelUpdated.get()
 }
 
-export { uploadModels, getAllModels, updateModel }
+/**
+ * @param {Number} modelID
+ */
+const deleteModel = async modelID => {
+  const { Model3DModel } = getModels()
+
+  await Model3DModel.destroy({
+    where: {
+      model_id: modelID
+    }
+  })
+
+  return 'El modelo fue borrado correctamente'
+}
+
+export { uploadModels, getAllModels, updateModel, deleteModel }

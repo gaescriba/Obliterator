@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import {
+  deleteModel,
   getAllModels,
   updateModel,
   uploadModels
@@ -26,7 +27,7 @@ const api3dModelsRouter = (router, prefix = '/models') => {
       })
 
       response({
-        response: res,
+        res,
         error: false,
         message: model,
         status: 200
@@ -36,7 +37,7 @@ const api3dModelsRouter = (router, prefix = '/models') => {
         '🚀 ~ file: 3dModels.js ~ line 28 ~ router.post ~ error',
         error
       )
-      response({ response: res })
+      response({ res })
     }
   })
 
@@ -46,7 +47,7 @@ const api3dModelsRouter = (router, prefix = '/models') => {
       const models = await getAllModels()
 
       response({
-        response: res,
+        res,
         error: false,
         message: models,
         status: 200
@@ -56,7 +57,7 @@ const api3dModelsRouter = (router, prefix = '/models') => {
         '🚀 ~ file: 3dModels.js ~ line 48 ~ router.get ~ error',
         error
       )
-      response({ response: res })
+      response({ res })
     }
   })
 
@@ -76,7 +77,7 @@ const api3dModelsRouter = (router, prefix = '/models') => {
       })
 
       response({
-        response: res,
+        res,
         error: false,
         message: modelUpdated,
         status: 200
@@ -86,17 +87,32 @@ const api3dModelsRouter = (router, prefix = '/models') => {
         '🚀 ~ file: 3dModels.js ~ line 62 ~ router.patch ~ error',
         error
       )
-      response({ response: res })
+      response({ res })
     }
   })
 
-  // router.delete(`${prefix}/:modelName`, async (req, res) => {
-  //   const models = await Models.findAll(req.params.id)
+  // Delete model
+  router.delete(`${prefix}/:modelID`, async (req, res) => {
+    try {
+      const {
+        params: { modelID }
+      } = req
+      const deleteResult = await deleteModel(modelID)
 
-  //   if (!models) return res.status(404).send('El modelo con ese id no existe')
-
-  //   res.status(200).send('Modelo borrado')
-  // })
+      response({
+        res,
+        error: false,
+        message: deleteResult,
+        status: 200
+      })
+    } catch (error) {
+      console.log(
+        '🚀 ~ file: 3dModels.js ~ line 97 ~ router.delete ~ error',
+        error
+      )
+      response({ res })
+    }
+  })
 }
 
 export { api3dModelsRouter }
