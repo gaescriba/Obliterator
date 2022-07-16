@@ -1,29 +1,28 @@
 // const Cloudinary = require('../../utils/cloudinary')
 // const Models = require('../../src/models/3dModels')
-// const upload = require('../../utils/multerFIles')
+const upload = require('../../utils/multerFiles')
+const { uploadImage } = require('../../utils/imageUploader')
 
 /**
  * @param {import('express').Router} router
  * @param {String} prefix
  */
-const route3dModels = (router, prefix = '') => {
+const route3dModels = (router, prefix = '/models') => {
   // Subir modelos
-  // router.post(`${prefix}/`, upload.single('file'), async (req, res) => {
-  //   try {
-  //     const result = await Cloudinary.uploader.upload(req.file.path, {
-  //       resource_type: 'image'
-  //     })
-  //     const models = new Models({
-  //       model_name: req.body.model_name,
-  //       model_url: result.secure_url,
-  //       price: req.body.price
-  //     })
+  router.post(`${prefix}/`, upload.single('file'), async (req, res) => {
+    try {
+      const result = await uploadImage(req.file.path)
+      // const models = new Models({
+      //   model_name: req.body.model_name,
+      //   model_url: result.secure_url,
+      //   price: req.body.price
+      // })
 
-  //     res.json(models)
-  //   } catch (error) {
-  //     res.send(error)
-  //   }
-  // })
+      res.json(result.secure_url)
+    } catch (error) {
+      res.send(error)
+    }
+  })
 
   // Preguntar Models
   router.get(`${prefix}/`, async (req, res) => {

@@ -12,7 +12,7 @@ const routers = [
   api3dImageRouter
 ]
 
-routers.forEach(routerFn => routerFn(router, '/models'))
+routers.forEach(routerFn => routerFn(router))
 router.get('/', (req, res) => res.send('en endpoint api'))
 
 module.exports = router
