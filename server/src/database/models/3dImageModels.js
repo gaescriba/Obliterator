@@ -1,6 +1,6 @@
 module.exports = (sequelize, type) => {
-  return sequelize.define('3dModel', {
-    imagen_id: {
+  return sequelize.define('3dImageModel', {
+    image_id: {
       type: type.INTEGER,
       primaryKey: true,
       autoIncrement: true
