@@ -4,7 +4,7 @@ import {
   getAllModels,
   updateModel,
   uploadModels
-} from '../../services/3dModels.js'
+} from '../../services/models3D.js'
 import { multerInstance as multer } from '../../utils/index.js'
 import { response } from '../response.js'
 

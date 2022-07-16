@@ -1,4 +1,4 @@
-export * from './model3D.js'
+export * from './models3D.js'
 export * from './accounts.js'
 export * from './locations.js'
 export * from './paymentMethods.js'
