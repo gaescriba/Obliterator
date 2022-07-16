@@ -1,4 +1,4 @@
-import { uploadModels } from '../../services/3dModels.js'
+import { getAllModels, uploadModels } from '../../services/3dModels.js'
 import { multerInstance as multer } from '../../utils/index.js'
 import { response } from '../response.js'
 
@@ -35,9 +35,24 @@ const api3dModelsRouter = (router, prefix = '/models') => {
     }
   })
 
-  // Preguntar Models
+  // Get models
   router.get(`${prefix}/`, async (req, res) => {
-    res.json('Holi')
+    try {
+      const models = await getAllModels()
+
+      response({
+        response: res,
+        error: false,
+        message: models,
+        status: 200
+      })
+    } catch (error) {
+      console.log(
+        '🚀 ~ file: 3dModels.js ~ line 48 ~ router.get ~ error',
+        error
+      )
+      response({ response: res })
+    }
   })
 
   // router.put(`${prefix}/:modelName`, async () => {})

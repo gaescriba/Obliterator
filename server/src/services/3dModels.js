@@ -20,4 +20,11 @@ const uploadModels = async ({ path, modelName, price }) => {
   return model.get()
 }
 
-export { uploadModels }
+const getAllModels = async () => {
+  const { Model3DModel } = getModels()
+  const models = await Model3DModel.findAll()
+
+  return models.map(model => model.get())
+}
+
+export { uploadModels, getAllModels }
