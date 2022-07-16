@@ -11,7 +11,7 @@ const response = ({
   message = 'Internal server error',
   status = 500
 }) => {
-  response.code(status).send({ error, message })
+  response.status(status).send({ error, message })
 }
 
 export { response }
