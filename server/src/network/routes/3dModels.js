@@ -1,5 +1,6 @@
 import { getModels } from '../../database/index.js'
 import { multerInstance as multer, uploadImage } from '../../utils/index.js'
+import { response } from '../response.js'
 
 /**
  * @param {import('express').Router} router
@@ -17,9 +18,18 @@ const api3dModelsRouter = (router, prefix = '/models') => {
         price: parseInt(req.body.price)
       })
 
-      res.json(model.get())
+      response({
+        response: res,
+        error: false,
+        message: model.get(),
+        status: 200
+      })
     } catch (error) {
-      res.send(error)
+      console.log(
+        '🚀 ~ file: 3dModels.js ~ line 28 ~ router.post ~ error',
+        error
+      )
+      response({ response: res })
     }
   })
 
