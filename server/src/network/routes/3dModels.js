@@ -1,4 +1,9 @@
-import { getAllModels, uploadModels } from '../../services/3dModels.js'
+/* eslint-disable camelcase */
+import {
+  getAllModels,
+  updateModel,
+  uploadModels
+} from '../../services/3dModels.js'
 import { multerInstance as multer } from '../../utils/index.js'
 import { response } from '../response.js'
 
@@ -55,7 +60,35 @@ const api3dModelsRouter = (router, prefix = '/models') => {
     }
   })
 
-  // router.put(`${prefix}/:modelName`, async () => {})
+  // Update model
+  router.patch(`${prefix}/:modelID`, async (req, res) => {
+    try {
+      const {
+        body: { model_name, image_url, price, project_id, polygons_id },
+        params: { modelID }
+      } = req
+      const modelUpdated = await updateModel(parseInt(modelID), {
+        model_name,
+        image_url,
+        price,
+        project_id,
+        polygons_id
+      })
+
+      response({
+        response: res,
+        error: false,
+        message: modelUpdated,
+        status: 200
+      })
+    } catch (error) {
+      console.log(
+        '🚀 ~ file: 3dModels.js ~ line 62 ~ router.patch ~ error',
+        error
+      )
+      response({ response: res })
+    }
+  })
 
   // router.delete(`${prefix}/:modelName`, async (req, res) => {
   //   const models = await Models.findAll(req.params.id)
