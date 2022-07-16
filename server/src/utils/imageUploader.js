@@ -16,7 +16,7 @@ const uploadImage = async path => {
     resource_type: 'image'
   })
 
-  return result
+  return result.secure_url
 }
 
 export { uploadImage }

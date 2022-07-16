@@ -14,11 +14,11 @@ import { uploadImage } from '../utils/index.js'
  * @returns Model object
  */
 const uploadModel = async ({ path, modelName, price }) => {
-  const result = await uploadImage(path)
+  const imageUrl = await uploadImage(path)
 
   return await storeModel({
     modelName,
-    imageUrl: result.secure_url,
+    imageUrl,
     price
   })
 }

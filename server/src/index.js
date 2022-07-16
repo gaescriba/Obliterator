@@ -13,8 +13,8 @@ const main = async () => {
   app.use(cors())
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
-  app.use('/api', apiRouter)
   ;(await dbConnection()).connect()
+  app.use('/api', apiRouter)
 
   app.listen(PORT, () => console.log(`Obliterator running at port: ${PORT}`))
 }
