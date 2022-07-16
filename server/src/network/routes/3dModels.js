@@ -1,15 +1,13 @@
-// const Cloudinary = require('../../utils/cloudinary')
 // const Models = require('../../src/models/3dModels')
-const upload = require('../../utils/multerFiles')
-const { uploadImage } = require('../../utils/imageUploader')
+import { multerInstance as multer, uploadImage } from '../../utils/index.js'
 
 /**
  * @param {import('express').Router} router
  * @param {String} prefix
  */
-const route3dModels = (router, prefix = '/models') => {
+const api3dModelsRouter = (router, prefix = '/models') => {
   // Subir modelos
-  router.post(`${prefix}/`, upload.single('file'), async (req, res) => {
+  router.post(`${prefix}/`, multer.single('file'), async (req, res) => {
     try {
       const result = await uploadImage(req.file.path)
       // const models = new Models({
@@ -40,4 +38,4 @@ const route3dModels = (router, prefix = '/models') => {
   // })
 }
 
-module.exports = route3dModels
+export { api3dModelsRouter }

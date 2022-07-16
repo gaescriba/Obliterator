@@ -1,9 +1,9 @@
-const express = require('express')
-const cors = require('cors')
-const morgan = require('morgan')
+import express from 'express'
+import cors from 'cors'
+import morgan from 'morgan'
 
-const { dbConnection } = require('./database')
-const apiRouter = require('./network')
+import { dbConnection } from './database/index.js'
+import { router as apiRouter } from './network/index.js'
 
 const PORT = process.env.PORT
 

@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize')
+import { Sequelize } from 'sequelize'
 
 const DB_DIALECT = process.env.DB_DIALECT
 const DB_USER = process.env.DB_USER
@@ -63,7 +63,4 @@ const dbConnection = async () => {
 // Project.belongsToMany(d3Model, {through: 'Projects_has_3dModels'})
 // User.belongsToMany(Transaction, {through: 'Transactions_has_User'})
 
-module.exports = {
-  sequelize,
-  dbConnection
-}
+export { sequelize, dbConnection }

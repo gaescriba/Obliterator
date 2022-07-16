@@ -2,7 +2,7 @@
  * @param {import('express').Router} router
  * @param {String} prefix
  */
-const routeAccounts = (router, prefix = '/accounts') => {
+const apiAccountsRouter = (router, prefix = '/accounts') => {
   router.get(`${prefix}/`, async (req, res) => {
     // const Accounts = await Account.findAll()
     // res.json(Users)
@@ -28,4 +28,4 @@ const routeAccounts = (router, prefix = '/accounts') => {
   })
 }
 
-module.exports = routeAccounts
+export { apiAccountsRouter }

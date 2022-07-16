@@ -1,18 +1,20 @@
-const router = require('express').Router()
-
-const apiUserRouter = require('./routes/users')
-const apiAccountsRouter = require('./routes/accounts')
-const api3dImageRouter = require('./routes/3dImage')
-const api3dModelsRouter = require('./routes/3dModels')
-
-const routers = [
-  apiUserRouter,
-  apiAccountsRouter,
+import { Router } from 'express'
+import {
+  api3dImageRouter,
   api3dModelsRouter,
-  api3dImageRouter
+  apiAccountsRouter,
+  apiUserRouter
+} from './routes/index.js'
+
+const router = Router()
+const routers = [
+  api3dImageRouter,
+  api3dModelsRouter,
+  apiAccountsRouter,
+  apiUserRouter
 ]
 
 routers.forEach(routerFn => routerFn(router))
 router.get('/', (req, res) => res.send('en endpoint api'))
 
-module.exports = router
+export { router }

@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "lint": "npx eslint src/* --fix",
     "service": "nodemon",
-    "lint": "npx eslint src/* --fix"
+    "start": "node -r dotenv/config src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -48,7 +50,7 @@
       ".env.example",
       "package.json"
     ],
-    "exec": "node -r dotenv/config src/index.js",
+    "exec": "npm run start",
     "ext": "js"
   }
 }
