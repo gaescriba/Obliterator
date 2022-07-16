@@ -68,6 +68,7 @@
     <li>Prettier</li>
     <li>ESlint</li>
   </ul>
-
+  <div class="text-sixty">Sesenta porciento</div>
+  <div class="text-thirty">Treinta porciento</div>
   <a href="https://github.com/dansvel/sveltekit-windi"> Go to Repo </a>
 </div>
