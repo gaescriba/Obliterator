@@ -6,5 +6,5 @@ const api3dModelsRouter = require('./api/3dModels')
 router.use('/Users', apiUserRouter)
 router.use('/Accounts', apiAccountRouter)
 router.use('/Modelos', api3dModelsRouter)
-router.get('/', (req,res) => res.send("en endpoint api"))
+router.get('/', (req, res) => res.send('en endpoint api'))
 module.exports = router

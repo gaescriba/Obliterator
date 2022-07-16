@@ -24,16 +24,18 @@ const dbConnection = async () => {
   return {
     connect: () => {
       if (!sequelize) {
-        sequelize = new Sequelize(`${DB_DIALECT}://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}`)
+        sequelize = new Sequelize(
+          `${DB_DIALECT}://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}`
+        )
         console.log('Mysql connection established.')
       }
 
       return sequelize
     },
     disconnect: () => {
-      logger.info('Postgres connection closed.')
+      console.log('Postgres connection closed.')
 
-      return sequelizeConnection?.close()
+      return sequelize?.close()
     }
   }
 }

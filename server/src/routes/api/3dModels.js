@@ -1,77 +1,40 @@
 const router = require('express').Router()
-
+const Cloudinary = require('../../utils/cloudinary')
+const Modelos = require('../../src/models/3dModels')
 const upload = require('../../utils/multerFIles')
 
-const Cloudinary = require('../../utils/cloudinary')
+// Subir modelos
+router.post('/', upload.single('file'), async (req, res) => {
+  try {
+    const result = await Cloudinary.uploader.upload(req.file.path, {
+      resource_type: 'image'
+    })
+    const modelos = new Modelos({
+      model_name: req.body.model_name,
+      model_url: result.secure_url,
+      price: req.body.price
+    })
 
-const Modelos = require('../../src/models/3dModels')
-
-
-
-
-
-//Subir Modelos
-router.post('/',upload.single('archivo'), async (req,res) => {
-    
-try{
-
-  
-    const result = await Cloudinary.uploader.upload(req.file.path,{
-        resource_type: "image",  
-        
-        
-      })
-
-
-
-let modelos = new Modelos({
-    
-    model_name: req.body.model_name,
-    model_url:result.secure_url,
-    price:req.body.price
-
-
+    res.json(modelos)
+  } catch (error) {
+    res.send(error)
+  }
 })
 
-res.json(modelos)
-}catch(err){
-
-res.send(err)
-
-
-}
-
-
+// Preguntar modelos
+router.get('/', async (req, res) => {
+  const modelos = await Modelos.findAll()
+  res.json(modelos)
 })
 
+router.put('/:modelName', async () => {})
 
-// preguntar modelos
+router.delete('./:modelName', async (req, res) => {
+  const modelos = await Modelos.findAll(req.params.id)
 
-//router.get('/', async (req,res) => {
-  //  const modelos = await Modelos.findAll()
-    //res.json(modelos)
-//})
+  if (!modelos) return res.status(404).send('El modelo con ese id no existe')
 
-router.put('/:model_name',async(req,res)=>{
-
-
-
-
-
+  res.status(200).send('Modelo borrado')
 })
-
-
-router.delete('/:model_name', async(req, res)=>{
-
-    const modelos = await Modelos.findAll(req.params.id)
-
-    if(!modelos){
-        return res.status(404).send('El modelo con ese id no esta o no se puede eliminar')
-    }
-
-    res.status(200).send('modelo  borrado')
-
-})
-
 
 module.exports = router
