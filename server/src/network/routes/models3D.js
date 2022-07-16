@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import {
   deleteModel,
-  getAllModels,
+  getModels,
   updateModel,
   uploadModel
 } from '../../services/models3D.js'
@@ -44,7 +44,7 @@ const api3dModelsRouter = (router, prefix = '/models') => {
   // Get models
   router.get(`${prefix}/`, async (req, res) => {
     try {
-      const models = await getAllModels()
+      const models = await getModels()
 
       response({
         res,

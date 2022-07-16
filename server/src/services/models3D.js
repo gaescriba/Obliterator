@@ -3,7 +3,7 @@ import {
   getAllModels,
   storeModel,
   updateOneModel
-} from '../database/queries/models3D.js'
+} from '../database/queries/index.js'
 import { uploadImage } from '../utils/index.js'
 
 /**
