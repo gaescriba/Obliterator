@@ -28,6 +28,7 @@
     "sequelize-cli": "^6.4.1"
   },
   "devDependencies": {
+    "@types/node": "^18.0.5",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",

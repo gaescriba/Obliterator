@@ -1,4 +1,3 @@
-// const Models = require('../../src/models/3dModels')
 import { multerInstance as multer, uploadImage } from '../../utils/index.js'
 
 /**
