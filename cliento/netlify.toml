@@ -1,8 +1,0 @@
-[build]
-  command = "npm run build"
-  publish = "build/"
-
-[[redirects]]
-status = 404
-from = "/*"
-to = "/index.html"
